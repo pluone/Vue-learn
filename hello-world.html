@@ -1,0 +1,34 @@
+<html>
+
+<head>
+    <title>hello world</title>
+    <script src="./vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <p>
+            传统的显示hello-world的方式是通过更改dom结构
+            <br> var dom = document.getElementById('app');
+            <br> dom.innerHTML = "hello world";
+            <br>
+        </p>
+        <div>
+            {{content}}
+        </div>
+    </div>
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                content: 'hello world'
+            }
+        });
+        setTimeout(() => {
+            app.$data.content = 'bye world'
+        }, 2000);
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<html>
+
+<head>
+    <title>使用组件</title>
+    <script src="./vue.js"></script>
+</head>
+
+<!-- 这是一个使用组件的例子 -->
+
+<body>
+    <div id="root">
+        <input v-model="inputValue">
+        <button @click="handleClick">提交</button>
+        <ul>
+            <todo-item v-for="(item,index) of list" :key="index" :item="item"></todo-item>
+        </ul>
+    </div>
+    <script>
+        Vue.component('todo-item', {
+            props: ['item'],
+            template: '<li> {{item}}</li>'
+        })
+        new Vue({
+            el: "#root",
+            data: {
+                inputValue: '',
+                list: []
+            },
+            methods: {
+                handleClick: function () { this.list.push(this.inputValue); this.inputValue = '' }
+            },
+            computed: {
+                fullName: function () {
+                    return this.firstName + ' ' + this.lastName
+                }
+            },
+        })
+    </script>
+</body>
+
+</html>
